@@ -1,0 +1,87 @@
+<html lang="en-US">
+<head>
+<link rel="icon" 
+      type="image/png" 
+      href="http://www.zhengchanghai.com/favicon.png">
+<title>TwitterER</title>
+
+<script type="text/javascript">
+
+function inputCheck()
+{
+ if (document.getElementById('query_term_1').value == 'object 1  (e.g. Heat)' || document.getElementById('query_term_2').value == 'object 2  (e.g. Spurs)' ) 
+  alert ('Please enter name of the two objects which you want to compare.');
+  else if  (document.getElementById('query_term_1').value == document.getElementById('query_term_2').value)
+  {
+  alert ('Please enter two different object name.');
+  }
+ else if(document.getElementById('num_of_page').value == 1024)
+ {alert ('You are right. The more pages you analyze, the accurate the results, at the cost of longer processing time. But, 1024 pages? Are you kidding?'); 
+ }
+  else 
+  {
+  document.getElementById("display").style.display ='block';
+  document.getElementById('form').action = "http://www.zhengchanghai.com/cgi/twitterer.py" ;
+  }
+}
+
+function clearInput()
+{
+window.location.reload();
+}
+</script>
+
+<style> 
+body{min-width:1024px;}
+#display {display:none;}
+#query_term_1{color:#aaa;border:1px solid;padding:5px;} 
+#query_term_2{color:#aaa;border:1px solid;padding:5px;} 
+p {font-family:Arial,Helvetica,sans-serif;}
+input {font-family:Arial,Helvetica,sans-serif;}
+#right {font-family:Arial,Helvetica,sans-serif;font-size: 80%;float:right;}
+#getvs
+  {
+  position:absolute; 
+  top:305px;
+  }
+</style>
+</head>
+
+<body onpageshow="if (event.persisted) clearInput();" > 
+<div id='right'><a  style='text-decoration : none;' href='http://zhengchanghai.com/twitterer/whatistwitterer.html'> <font color='#FF6600'>what is TwitterER?</font></a>&nbsp;&nbsp;</div>
+</br></br></br>
+<p  align="center"><a href='http://zhengchanghai.com/twitterer'><img src='logo_s.jpg'  width="400px" ></a></br><font color='#aaa' size='2px'>easy to compare, easy for life</font></p>  </br>
+
+ 
+<form id="form" method="get" action="" onSubmit="inputCheck()" align="center">
+<div style="font-family:arial">
+<p align="center">
+<input  id="query_term_1" type="text" name="query_term_1" style="width:500" value="object 1  (e.g. Heat)" onkeydown="this.style.color='#000000'" onmouseover="this.style.borderColor='#FF6600'" onmouseout="this.style.borderColor='#aaa'" onFocus="if (value =='object 1  (e.g. Heat)'){value =''} " onBlur="if (value ==''){value='object 1  (e.g. Heat)';this.style.color='#aaa'}" >
+
+</br><font color='#aaa'>vs.</font></br>
+<input id="query_term_2" type="text" name="query_term_2" style="width:500" value="object 2  (e.g. Spurs)" onkeydown="this.style.color='#000000'" onmouseover="this.style.borderColor='#FF6600'" onmouseout="this.style.borderColor='#aaa'" onFocus="if (value =='object 2  (e.g. Spurs)'){value =''}" onBlur="if (value ==''){value='object 2  (e.g. Spurs)';this.style.color='#aaa'}">
+</br><div align='center'> <a style='text-decoration : none;' href= "http://zhengchanghai.com/twitterer/one_object.html"><font color='#aaa' size='2px'>hard to figure out a pair to compare? </font><font color='#FF6600' size='2px'>Start with one object!</font></a></br></br>
+<input type="submit" value="Compare">
+
+</br></br>
+
+<font color='#aaa' size='2px'>number of data:&nbsp; </font>  
+<select id="num_of_page" name="num_of_page" style="width:55">
+
+<option selected="selected">1</option> 
+<option>2</option> 
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>1024</option>
+</select>
+<font color='#aaa' size='2px'> x100 </font> 
+</div>
+</p>
+</div>
+</form> 
+</br>
+<p id="display" align="center"> <img src='loading.gif'> </p> 
+<noscript>
+ </body>
+</html>
